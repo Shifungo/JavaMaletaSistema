@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioMaletas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ace114c3-01b3-4451-8247-f5e7bd9de712">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="RelatorioMaleta"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT m.cod_maleta, m.nome_maleta, GROUP_CONCAT(i.nome_itens SEPARATOR ', ') AS itens_maleta
+FROM maleta m
+LEFT JOIN itens_maleta im ON m.cod_maleta = im.fk_maletas
+LEFT JOIN itens i ON im.fk_itens = i.cod_itens
+GROUP BY m.cod_maleta, m.nome_maleta]]>
+	</queryString>
+	<field name="cod_maleta" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="cod_maleta"/>
+		<property name="com.jaspersoft.studio.field.label" value="cod_maleta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="maleta"/>
+	</field>
+	<field name="nome_maleta" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome_maleta"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome_maleta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="maleta"/>
+	</field>
+	<field name="itens_maleta" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="itens_maleta"/>
+		<property name="com.jaspersoft.studio.field.label" value="itens_maleta"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="185" height="30" uuid="5be757e7-5695-402a-93fa-62f633a89d9a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8e221a0b-8cb6-4304-890f-11e4cbd51436"/>
+				</reportElement>
+				<text><![CDATA[cod_maleta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="185" y="0" width="185" height="30" uuid="df5c630c-0472-4c55-9376-69c95f5fee0e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fc666a20-694d-41c2-84d0-ad311fe323c7"/>
+				</reportElement>
+				<text><![CDATA[nome_maleta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="0" width="185" height="30" uuid="06aa7f42-9df4-46e8-9d29-3b422f06aba2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1b524113-599e-4b3e-98f7-22f5eb23f930"/>
+				</reportElement>
+				<text><![CDATA[itens_maleta]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="185" height="30" uuid="1c823e24-2dce-46b6-a21b-b7182f14671c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8e221a0b-8cb6-4304-890f-11e4cbd51436"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{cod_maleta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="185" y="0" width="185" height="30" uuid="55b4ed80-4be9-4c5f-9454-c87cacdffb4d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fc666a20-694d-41c2-84d0-ad311fe323c7"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nome_maleta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="0" width="185" height="30" uuid="0c8ca5ac-57f8-4a22-a0e4-639c0f96ef20">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1b524113-599e-4b3e-98f7-22f5eb23f930"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{itens_maleta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
